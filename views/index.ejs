@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>dsebd</title>
+	<link rel="manifest" href="manifest.json">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		.bdr {
+			border-right: 1px solid #ddd;
+		}
+
+		.searchForm {
+			position: relative;
+			text-align: right;
+		}
+
+		.search-box {
+			background: transparent;
+			border: 0;
+			border-bottom-color: currentcolor;
+			border-bottom-style: none;
+			border-bottom-width: 0px;
+			border-bottom-color: currentcolor;
+			border-bottom-style: none;
+			border-bottom-width: 0px;
+			border-bottom: 1px solid #bfbfbf;
+			display: inline-block;
+			width: 80%;
+			padding: 10px;
+			padding-right: 10px;
+			padding-left: 10px;
+			padding-right: 50px;
+			padding-left: 20px;
+		}
+
+		.searchBtn {
+			border: 0;
+			background: 0;
+			color: #333;
+			display: inline-block;
+			position: absolute;
+			right: 14px;
+			background: gray;
+			width: 50px;
+			height: 35px;
+			text-align: center;
+			line-height: 50px;
+			background: transparent;
+			top: 0;
+			transform: translateY(50%);
+			padding-bottom: ;
+		}
+
+		.searchBtn svg {
+			scale: 1.7;
+		}
+		.back-to-top{
+			position: fixed;
+			width: 60px;
+			height: 60px;
+			right: 80px;
+			bottom: 80px;
+			background: #333;
+			text-align: center;
+			line-height: 60px;
+			color: #ffffff;
+			border-radius: 50%;
+		}
+		.back-to-top:hover{
+			color: rgb(166, 207, 255);
+		}
+		.back-to-top svg{
+			scale: 1.5;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="sticky-top">
+		<div class="header_label bg-white">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-6">
+						<h3 class="mb-0 py-4 font-weight-bold">JcStocks</h3>
+					</div>
+					<div class="col-6 py-4 searchForm">
+						<input type="text" placeholder="Type The Trading Code ...." class="search-box">
+						<button class="searchBtn">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+								class="bi bi-search" viewBox="0 0 16 16">
+								<path
+									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+							</svg>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main_contentwrapper">
+			<div class="thead bg-dark">
+				<div class="container">
+					<div class="row">
+						<b class="col-1 py-3 text-center font-weight-bold text-light bdr jcstocks">No.</b>
+						<b class="col py-3 text-center font-weight-bold text-light bdr">TRADING CODE</b>
+						<b class="col py-3 text-center font-weight-bold text-light bdr">LTP</b>
+						<b class="col py-3 text-center font-weight-bold text-light bdr">PRICE CHANGE</b>
+						<b class="col py-3 text-center font-weight-bold text-light">% CHANGE</b>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+	<div class="tbodywrap">
+
+		<% for (var i=0; i < data.length; i++) { %>
+
+		<div class='singel_row <%= (i%2 == 0)? "bg-light" : "bg-white"%>' id='<%= data[i][0].toLowerCase() %>'>
+			<div class="container">
+				<div class="row">
+					<b class="col-1 py-3 text-center font-weight-bold text-dark bdr jcstocks"><%= i+1 %></b>
+					<b class="col py-3 text-center text-dark bdr jcstocks"><%= data[i][0] %></b>
+					<b class="col py-3 text-center text-dark bdr jcstocks"><%= data[i][1] %></b>
+					<b
+						class='col py-3 text-center bdr jcstocks <%= (data[i][2] > 0)? "text-success" :(data[i][2] == 0)?" text-dark" :" text-danger" %>'><%= data[i][2] %></b>
+					<b class="col py-3 text-center text-dark jcstocks"><%= data[i][3] %></b>
+				</div>
+			</div>
+		</div>
+
+		<% } %>
+		<% 
+		
+		<!-- console.log(0<-1) -->
+		%>
+
+	</div>
+
+
+
+
+	<a href="#" class="back-to-top">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+			class="bi bi-chevron-double-up" viewBox="0 0 16 16">
+			<path fill-rule="evenodd"
+				d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z" />
+			<path fill-rule="evenodd"
+				d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+		</svg>
+	</a>
+
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript">
+		let getSiblings = function (elem) {
+			return elem.parentNode.children;
+		};
+
+		let req = (elm) => {
+			return document.querySelector(elm);
+		}
+
+		let searchBox = req('.search-box');
+		let searchBtn = req('.searchBtn');
+		let rowName;
+		searchBtn.addEventListener('click', e => {
+			e.preventDefault();
+			rowName = searchBox.value.toLocaleLowerCase();
+			let rowElm = document.getElementById(rowName)
+			window.scrollTo(rowElm.offsetLeft, rowElm.offsetTop - 300);
+			let sib = Array.prototype.slice.call(getSiblings(rowElm));
+
+			sib.map(row => {
+				row.style.cssText = `
+				background:none;
+				`
+				console.log(row)
+			});
+			rowElm.style.cssText = `
+			 background:#e8ff98 !important;
+			`
+
+
+		})
+	</script>
+</body>
+
+</html>
